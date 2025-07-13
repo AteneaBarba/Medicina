@@ -6,6 +6,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2a9d8f">
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  }
+</script>
   <style>
     body {
       font-family: 'Quicksand', sans-serif;
