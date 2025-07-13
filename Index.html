@@ -3,29 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <title>Malla Interactiva - Medicina UNAL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; background: #f4f9ff; padding: 20px; }
-    .semestre { margin-bottom: 30px; }
-    .semestre h3 { margin-bottom: 10px; color: #264653; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #f4f9ff;
+      padding: 40px;
+      margin: 0;
+    }
+    h1 {
+      color: #2a9d8f;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .semestre {
+      margin-bottom: 40px;
+      padding: 20px;
+      border-left: 6px solid #2a9d8f;
+      background: #ffffff;
+      box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+    }
+    .semestre h3 {
+      color: #264653;
+      margin-bottom: 15px;
+    }
     .materia {
-      display: inline-block; margin: 5px;
-      padding: 10px 15px; border-radius: 10px;
-      background: #e0e0e0; color: #333;
+      display: inline-block;
+      margin: 6px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: #e0e0e0;
+      color: #333;
       border: 2px solid #b0bec5;
-      cursor: pointer; position: relative;
-      transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
     }
-    .materia[data-estado="cursando"] { background: #ffcc00; color: #000; }
-    .materia[data-estado="aprobada"] { background: #2a9d8f; color: #fff; border-color: #21867a; }
-    .materia.locked { opacity: 0.5; cursor: not-allowed; }
+    .materia:hover {
+      transform: scale(1.03);
+    }
+    .materia[data-estado="cursando"] {
+      background: #ffdd57;
+      color: #000;
+    }
+    .materia[data-estado="aprobada"] {
+      background: #2a9d8f;
+      color: #fff;
+      border-color: #21867a;
+    }
+    .materia.locked {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
     .tooltip {
-      display: none; position: absolute; bottom: 110%; left: 50%;
+      display: none;
+      position: absolute;
+      bottom: 110%;
+      left: 50%;
       transform: translateX(-50%);
-      background: #333; color: #fff;
-      padding: 5px 10px; border-radius: 5px;
-      font-size: 12px; white-space: nowrap;
+      background: #264653;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
     }
-    .materia:hover .tooltip { display: block; }
+    .materia:hover .tooltip {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -67,3 +114,81 @@
   <div class="materia" data-id="MICROBIO" data-prereq="FISIO2">Microbiología <span class="tooltip">Prer: Fisiología II</span></div>
   <div class="materia" data-id="INTRO_MEDINT" data-prereq="PATO_GENERAL">Introducción a la Medicina Interna <span class="tooltip">Prer: Patología General</span></div>
 </div>
+<div class="semestre"><h3>Semestre 6</h3>
+  <div class="materia" data-id="MEDINT1" data-prereq="INTRO_MEDINT">Medicina Interna I <span class="tooltip">Prer: Introducción a la Medicina Interna</span></div>
+  <div class="materia" data-id="FARMACO" data-prereq="PATO_ESPECIAL,MICROBIO">Farmacología <span class="tooltip">Prer: Patología Especial, Microbiología</span></div>
+  <div class="materia" data-id="PSIQUIATRIA1" data-prereq="INTRO_MEDINT">Psiquiatría I <span class="tooltip">Prer: Introducción a la Medicina Interna</span></div>
+  <div class="materia" data-id="INTRO_IMG" data-prereq="PATO_ESPECIAL">Introducción a las Imágenes Diagnósticas <span class="tooltip">Prer: Patología Especial</span></div>
+</div>
+
+<div class="semestre"><h3>Semestre 7</h3>
+  <div class="materia" data-id="MEDINT2" data-prereq="MEDINT1,FARMACO,INMUNO">Medicina Interna II <span class="tooltip">Prer: Medicina Interna I, Farmacología, Inmunología</span></div>
+  <div class="materia" data-id="REHAB" data-prereq="MEDINT1,FARMACO">Rehabilitación <span class="tooltip">Prer: Medicina Interna I, Farmacología</span></div>
+  <div class="materia" data-id="MEDINT3" data-prereq="MEDINT2">Medicina Interna III <span class="tooltip">Prer: Medicina Interna II</span></div>
+  <div class="materia" data-id="IMG_DIAG" data-prereq="INTRO_IMG">Imágenes Diagnósticas <span class="tooltip">Prer: Introducción a las Imágenes Diagnósticas</span></div>
+</div>
+
+<div class="semestre"><h3>Semestre 8</h3>
+  <div class="materia" data-id="PED1" data-prereq="MEDINT2,GENETICA">Pediatría I <span class="tooltip">Prer: Medicina Interna II, Genética</span></div>
+  <div class="materia" data-id="PED2" data-prereq="PED1">Pediatría II <span class="tooltip">Prer: Pediatría I</span></div>
+  <div class="materia" data-id="HAB_PED" data-prereq="REHAB">Habilitación Pediátrica <span class="tooltip">Prer: Rehabilitación</span></div>
+</div>
+
+<div class="semestre"><h3>Semestre 9</h3>
+  <div class="materia" data-id="CIRUGIA1" data-prereq="PED1">Cirugía I <span class="tooltip">Prer: Pediatría I</span></div>
+  <div class="materia" data-id="CIRUGIA2" data-prereq="CIRUGIA1">Cirugía II <span class="tooltip">Prer: Cirugía I</span></div>
+</div>
+
+<div class="semestre"><h3>Semestre 10</h3>
+  <div class="materia" data-id="GINE_OBS" data-prereq="CIRUGIA1">Ginecología y Obstetricia <span class="tooltip">Prer: Cirugía I</span></div>
+  <div class="materia" data-id="ADMIN_SALUD" data-prereq="EPIDEMIO,MEDINT2">Administración en Salud <span class="tooltip">Prer: Epidemiología, Medicina Interna II</span></div>
+  <div class="materia" data-id="PSIQ2" data-prereq="PSIQUIATRIA1,PED1">Psiquiatría II <span class="tooltip">Prer: Psiquiatría I, Pediatría I</span></div>
+  <div class="materia" data-id="MED_LEGAL" data-prereq="PATO_ESPECIAL">Medicina Legal I <span class="tooltip">Prer: Patología Especial</span></div>
+</div>
+
+<script>
+  const estados = ['pendiente', 'cursando', 'aprobada'];
+
+  function cargar() {
+    const data = JSON.parse(localStorage.getItem('pensumMed') || '{}');
+    document.querySelectorAll('.materia').forEach(el => {
+      el.dataset.estado = data[el.dataset.id] || 'pendiente';
+    });
+    verificar();
+  }
+
+  function guardar() {
+    const data = {};
+    document.querySelectorAll('.materia').forEach(el => {
+      data[el.dataset.id] = el.dataset.estado;
+    });
+    localStorage.setItem('pensumMed', JSON.stringify(data));
+  }
+
+  function verificar() {
+    document.querySelectorAll('.materia').forEach(el => {
+      const prereq = el.dataset.prereq;
+      if (!prereq) { el.classList.remove('locked'); return; }
+      const requisitos = prereq.split(',');
+      const ok = requisitos.every(id => {
+        const materia = document.querySelector(`.materia[data-id="${id}"]`);
+        return materia && materia.dataset.estado === 'aprobada';
+      });
+      el.classList.toggle('locked', !ok);
+    });
+  }
+
+  document.querySelectorAll('.materia').forEach(el => {
+    el.addEventListener('click', () => {
+      if (el.classList.contains('locked')) return;
+      const estado = el.dataset.estado;
+      const next = estados[(estados.indexOf(estado) + 1) % estados.length];
+      el.dataset.estado = next;
+      guardar(); verificar();
+    });
+  });
+
+  window.addEventListener('load', cargar);
+</script>
+</body>
+</html>
