@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Interactiva - Medicina UNAL</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f9ff; padding: 20px; }
+    .semestre { margin-bottom: 30px; }
+    .semestre h3 { margin-bottom: 10px; color: #264653; }
+    .materia {
+      display: inline-block; margin: 5px;
+      padding: 10px 15px; border-radius: 10px;
+      background: #e0e0e0; color: #333;
+      border: 2px solid #b0bec5;
+      cursor: pointer; position: relative;
+      transition: all 0.3s;
+    }
+    .materia[data-estado="cursando"] { background: #ffcc00; color: #000; }
+    .materia[data-estado="aprobada"] { background: #2a9d8f; color: #fff; border-color: #21867a; }
+    .materia.locked { opacity: 0.5; cursor: not-allowed; }
+    .tooltip {
+      display: none; position: absolute; bottom: 110%; left: 50%;
+      transform: translateX(-50%);
+      background: #333; color: #fff;
+      padding: 5px 10px; border-radius: 5px;
+      font-size: 12px; white-space: nowrap;
+    }
+    .materia:hover .tooltip { display: block; }
+  </style>
+</head>
+<body>
+<h1>🩺 Malla Interactiva – Medicina UNAL</h1>
+
+<div class="semestre"><h3>Semestre 1</h3>
+  <div class="materia" data-id="EMBRIOLOGIA" data-prereq="">Embriología</div>
+  <div class="materia" data-id="HISTO1" data-prereq="">Histología I</div>
+  <div class="materia" data-id="QUIMICA" data-prereq="">Química básica para ciencias de la salud</div>
+  <div class="materia" data-id="INTRO_FISIO" data-prereq="">Introducción a la Fisiología</div>
+  <div class="materia" data-id="SALUD_SOCIEDAD" data-prereq="">Salud y Sociedad</div>
+</div>
+
+<div class="semestre"><h3>Semestre 2</h3>
+  <div class="materia" data-id="HISTO2" data-prereq="HISTO1">Histología II <span class="tooltip">Prer: Histología I</span></div>
+  <div class="materia" data-id="FISIO1" data-prereq="INTRO_FISIO">Fisiología I <span class="tooltip">Prer: Introducción a la Fisiología</span></div>
+  <div class="materia" data-id="BIOQUIMICA" data-prereq="QUIMICA">Bioquímica <span class="tooltip">Prer: Química básica</span></div>
+  <div class="materia" data-id="MED_SOCIEDAD" data-prereq="SALUD_SOCIEDAD">Medicina y Sociedad <span class="tooltip">Prer: Salud y Sociedad</span></div>
+  <div class="materia" data-id="ANAT1" data-prereq="EMBRIOLOGIA,HISTO1">Anatomía I <span class="tooltip">Prer: Embriología, Histología I</span></div>
+</div>
+
+<div class="semestre"><h3>Semestre 3</h3>
+  <div class="materia" data-id="ANAT2" data-prereq="ANAT1">Anatomía II <span class="tooltip">Prer: Anatomía I</span></div>
+  <div class="materia" data-id="BIOMOL" data-prereq="BIOQUIMICA">Biología Molecular <span class="tooltip">Prer: Bioquímica</span></div>
+  <div class="materia" data-id="HISTO3" data-prereq="HISTO2">Histología III <span class="tooltip">Prer: Histología II</span></div>
+  <div class="materia" data-id="GENETICA" data-prereq="HISTO1,BIOQUIMICA">Genética <span class="tooltip">Prer: Histología I, Bioquímica</span></div>
+</div>
+
+<div class="semestre"><h3>Semestre 4</h3>
+  <div class="materia" data-id="FISIO2" data-prereq="FISIO1">Fisiología II <span class="tooltip">Prer: Fisiología I</span></div>
+  <div class="materia" data-id="INMUNO" data-prereq="GENETICA,BIOQUIMICA,FISIO1,BIOMOL">Inmunología <span class="tooltip">Prer: Genética, Bioquímica, Fisiología I, Biología Molecular</span></div>
+  <div class="materia" data-id="PATO_GENERAL" data-prereq="HISTO3,ANAT2,BIOQUIMICA,FISIO1">Patología General <span class="tooltip">Prer: Histología III, Anatomía II, Bioquímica, Fisiología I</span></div>
+</div>
+
+<div class="semestre"><h3>Semestre 5</h3>
+  <div class="materia" data-id="EPIDEMIO" data-prereq="">Epidemiología</div>
+  <div class="materia" data-id="PATO_ESPECIAL" data-prereq="PATO_GENERAL,ANAT1,BIOMOL,FISIO2">Patología Especial <span class="tooltip">Prer: Patología General, Anatomía I, Biología Molecular, Fisiología II</span></div>
+  <div class="materia" data-id="PARASITO" data-prereq="INMUNO">Parasitología <span class="tooltip">Prer: Inmunología</span></div>
+  <div class="materia" data-id="MICROBIO" data-prereq="FISIO2">Microbiología <span class="tooltip">Prer: Fisiología II</span></div>
+  <div class="materia" data-id="INTRO_MEDINT" data-prereq="PATO_GENERAL">Introducción a la Medicina Interna <span class="tooltip">Prer: Patología General</span></div>
+</div>
